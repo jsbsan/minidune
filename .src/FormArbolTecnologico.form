@@ -2,6 +2,7 @@
 
 { Form Form
   MoveScaled(0,0,180,90)
+  Icon = Picture["DUNE2.bmp"]
   { PictureBoxFabricaPrincipal PictureBox
     MoveScaled(2,1,16,14)
     ToolTip = ("Fabrica Principal")
@@ -143,5 +144,9 @@
     Font = Font["+11"]
     Foreground = &H007FFF&
     Text = ("➜")
+  }
+  { PictureBox1 PictureBox
+    MoveScaled(5,41,22,25)
+    Picture = Picture.Load("DUNE2.bmp")
   }
 }

@@ -2,6 +2,7 @@
 
 { Form Form
   MoveScaled(0,0,162,83)
+  Icon = Picture["DUNE2.bmp"]
   { Label1 Label
     MoveScaled(4,3,22,5)
     Alignment = Align.Right
