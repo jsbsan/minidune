@@ -1,0 +1,13 @@
+' Gambas class file
+
+Inherits VEHICULOS
+
+Property RecolectaEspecie As Integer Use $intRecolectaEspecia = 100
+
+Public Sub _new()
+
+  Me.coste = 100
+  Me.energia = 20 '
+  Me.CosteMantenimiento = 15
+
+End

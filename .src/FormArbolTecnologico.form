@@ -1,0 +1,147 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,180,90)
+  { PictureBoxFabricaPrincipal PictureBox
+    MoveScaled(2,1,16,14)
+    ToolTip = ("Fabrica Principal")
+    Picture = Picture.Load("edificios/PlantaFabricaPrincipal.png")
+    Stretch = True
+  }
+  { PictureBoxAeroGeneradores PictureBox
+    MoveScaled(24,1,16,14)
+    ToolTip = ("AeroGeneradores-Molinos")
+    Picture = Picture.Load("edificios/FabricaMolinoEolico.png")
+    Stretch = True
+  }
+  { PictureBoxRefineria PictureBox
+    MoveScaled(48,1,16,14)
+    ToolTip = ("Refineria de Especie")
+    Picture = Picture.Load("edificios/FabricaRefineriaEspecie.png")
+    Stretch = True
+  }
+  { PictureBoxCosechadora PictureBox
+    MoveScaled(75,4,5,8)
+    ToolTip = ("Cosechadora")
+    Picture = Picture.Load("edificios/VehiculoCosechadoraRojo.png")
+    Stretch = True
+  }
+  { PictureBoxSilo PictureBox
+    MoveScaled(77,19,16,12)
+    ToolTip = ("Silo de Especie")
+    Picture = Picture.Load("edificios/silo.png")
+    Stretch = True
+  }
+  { PictureBoxTorretaDefensa PictureBox
+    MoveScaled(77,34,16,12)
+    ToolTip = ("Torreta Defensora")
+    Picture = Picture.Load("edificios/TorretaDefensa.png")
+    Stretch = True
+  }
+  { PictureBoxRadar PictureBox
+    MoveScaled(48,19,16,12)
+    ToolTip = ("Central Radar")
+    Picture = Picture.Load("edificios/Radar.png")
+    Stretch = True
+  }
+  { PictureBoxFabricaLigera PictureBox
+    MoveScaled(77,50,16,12)
+    ToolTip = ("Fabrica Vehiculos Ligeros")
+    Picture = Picture.Load("edificios/FabricaVehiculosLigeros.png")
+    Stretch = True
+  }
+  { PictureBoxFabricaPesada PictureBox
+    MoveScaled(125,65,16,12)
+    ToolTip = ("Fabrica Vehiculos Pesados")
+    Picture = Picture.Load("edificios/FabricaVehiculosPesados.png")
+    Stretch = True
+  }
+  { PictureBoxTallerReparacion PictureBox
+    MoveScaled(125,50,16,12)
+    ToolTip = ("Talleres de Reparacion")
+    Picture = Picture.Load("edificios/FabricaReparacion.png")
+    Stretch = True
+  }
+  { PictureBoxCuartel PictureBox
+    MoveScaled(77,65,16,12)
+    ToolTip = ("Cuartel Tropas")
+    Picture = Picture.Load("edificios/FabricaCuartelPersonal.png")
+    Stretch = True
+  }
+  { PictureBoxCentroInvestigacion PictureBox
+    MoveScaled(101,50,16,12)
+    ToolTip = ("Centro de Investigación")
+    Picture = Picture.Load("edificios/FactoriaAltaTecnologia.png")
+    Stretch = True
+  }
+  { Label1 Label
+    MoveScaled(18,2,8,11)
+    Font = Font["+11"]
+    Foreground = &H007FFF&
+    Text = ("➜")
+  }
+  { Label2 Label
+    MoveScaled(41,2,8,11)
+    Font = Font["+11"]
+    Foreground = &H007FFF&
+    Text = ("➜")
+  }
+  { Label3 Label
+    MoveScaled(43,17,5,11)
+    Font = Font["+11"]
+    Foreground = &H007FFF&
+    Text = ("↳")
+  }
+  { Label4 Label
+    MoveScaled(66,20,8,11)
+    Font = Font["+11"]
+    Foreground = &H007FFF&
+    Text = ("➜")
+  }
+  { Label5 Label
+    MoveScaled(68,35,5,11)
+    Font = Font["+11"]
+    Foreground = &H007FFF&
+    Text = ("↳")
+  }
+  { Label6 Label
+    MoveScaled(67,49,5,11)
+    Font = Font["+11"]
+    Foreground = &H007FFF&
+    Text = ("↳")
+  }
+  { Label7 Label
+    MoveScaled(67,67,5,11)
+    Font = Font["+11"]
+    Foreground = &H007FFF&
+    Text = ("↳")
+  }
+  { Label8 Label
+    MoveScaled(94,49,8,11)
+    Font = Font["+11"]
+    Foreground = &H007FFF&
+    Text = ("➜")
+  }
+  { Label9 Label
+    MoveScaled(119,50,8,11)
+    Font = Font["+11"]
+    Foreground = &H007FFF&
+    Text = ("➜")
+  }
+  { Label10 Label
+    MoveScaled(120,65,5,11)
+    Font = Font["+11"]
+    Foreground = &H007FFF&
+    Text = ("↳")
+  }
+  { Label11 Label
+    MoveScaled(2,82,46,6)
+    Text = ("https://fsymbols.com/es/signos/flechas/")
+  }
+  { Label12 Label
+    MoveScaled(66,2,8,11)
+    Font = Font["+11"]
+    Foreground = &H007FFF&
+    Text = ("➜")
+  }
+}

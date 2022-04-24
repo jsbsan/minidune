@@ -1,0 +1,11 @@
+' Gambas class file
+
+Inherits Edificio
+
+Public Sub _new()
+
+  Me.coste = 100
+  Me.energia = 20 'GENERA ENERGIA
+  Me.CosteMantenimiento = 15
+
+End

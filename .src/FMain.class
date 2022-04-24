@@ -1,0 +1,269 @@
+' Gambas class file
+
+Public GlobalEspecie As Integer
+Public GlobalEnergia As Integer
+Public globalConsumoEspecie As Integer
+
+Public ListaEdificios As New Edificio[]
+Public ListaVehiculos As New Vehiculos[]
+Public ultimalinea As String
+
+Public NivelArbol As Integer
+
+Public Sub Form_Open()
+
+  reiniciar()
+
+End
+
+Public Sub reiniciar()
+
+  GlobalEspecie = 1000
+  GlobalEnergia = 100
+
+  ListaEdificios.Clear()
+  ListaVehiculos.Clear()
+  ultimalinea = ""
+
+  TextAreaInforme.Text = ""
+  TextAreaNoticiasyAvisos.Text = ""
+  Timer1.Start
+
+End
+
+Public Sub ActualizaValoresContadores()
+  'actualiza valores de contadores
+
+  LCDLabelEspecie.Value = GlobalEspecie
+  LCDLabelEnergia.Value = GlobalEnergia
+  '----------------------------
+  'condiciones de energia
+  '----------------------------
+
+  If GlobalEnergia < 50 Then ALARMA("Alarma: Energia Baja")
+  If GlobalEnergia < -100 Then ALARMA("Alarma: Energia Muy Baja !!!")
+  If GlobalEnergia < -300 Then
+    finjuego("Perdio por falta de Energia")
+  Endif
+
+  '----------------------------
+  'condiciones de especie
+  '----------------------------
+  If GlobalEspecie < -500 Then
+    finjuego("Perdio por falta de Especie")
+  Endif
+
+  If GlobalEspecie < (globalConsumoEspecie * 2) Then
+    ALARMA("Alarma: Especie Baja")
+  Else
+    If GlobalEspecie < 0 Then
+      ALARMA("Alarma: No tenemos Especie !!!")
+    Endif
+
+  Endif
+
+End
+
+Public Sub Timer1_Timer()
+
+  Dim ProduccionEnergia As Integer = 0
+  Dim ConsumoEnergia As Integer = 0
+  Dim ConsumoEspecie As Integer = 0
+  Dim RecolectaEspecie As Integer = 0
+  'revisa la lista de construcciones, y reduce la energia de cada una de ellas
+  Dim TmpEdi As Edificio
+  Dim tmpVeh As Object' VEHICULOS
+
+  For Each TmpEdi In ListaEdificios
+    ConsumoEspecie += TmpEdi.CosteMantenimiento
+
+    If Object.Is(TmpEdi, "Molino") Then
+      ProduccionEnergia += TmpEdi.energia
+    Else
+      ConsumoEnergia += TmpEdi.energia
+    Endif
+
+  Next
+
+  For Each tmpVeh In ListaVehiculos
+    If Object.Is(tmpVeh, "COSECHADORA") Then
+      '  Dim cose As New COSECHADORA
+      RecolectaEspecie += tmpVeh.RecolectaEspecie
+    Endif
+
+    ConsumoEnergia += tmpVeh.energia
+    ConsumoEspecie += tmpVeh.CosteMantenimiento
+  Next
+
+  'Variables Globales
+  GlobalEnergia -= ConsumoEnergia - ProduccionEnergia
+  GlobalEspecie -= ConsumoEspecie - RecolectaEspecie
+
+  globalConsumoEspecie = ConsumoEspecie
+
+  TextAreaInforme.text = "-----------------------------" & gb.CrLf
+  TextAreaInforme.text &= "---Informe de la Compañia----" & gb.CrLf
+  TextAreaInforme.text &= "---        DIARIO        ----" & gb.CrLf
+  TextAreaInforme.text &= "-----------------------------" & gb.CrLf
+  TextAreaInforme.text &= "Generación de Energia: " & ProduccionEnergia & gb.CrLf
+  TextAreaInforme.text &= "Gasto de Energia: " & ConsumoEnergia & gb.CrLf
+  TextAreaInforme.text &= "Recoleccion de Especia: " & RecolectaEspecie & gb.CrLf
+  TextAreaInforme.text &= "Gasto de Manteinimiento de Instalaciones: " & ConsumoEspecie & gb.CrLf
+  TextAreaInforme.text &= "Numero de Edificios: " & Str$(ListaEdificios.count) & gb.CrLf
+  TextAreaInforme.text &= "Numero de Vehiculos: " & Str$(ListaEdificios.count) & gb.CrLf
+
+  ActualizaValoresContadores()
+  TextAreaInforme.Refresh()
+
+  LabelHoraActualSistema.Text = "Hora del Sistema: " & Format(Time, "hh:nn:ss")
+
+  LabelHoraActualSistema.Refresh
+
+End
+
+Public Sub ALARMA(t As String)
+
+  If ultimalinea <> t Then
+    TextAreaNoticiasyAvisos.text &= Format(Time, "hh:nn:ss") & " " & t & gb.CrLf
+    ultimalinea = t
+    TextAreaNoticiasyAvisos.Refresh()
+  Endif
+
+End
+
+Public Sub finjuego(t As String)
+
+  Dim respuesta As Integer
+
+  Timer1.Stop
+
+  Message.Error(t)
+
+  respuesta = Message.Question("¿quiere volver a jugar", "si", "no")
+
+  If respuesta = 1 Then
+    reiniciar
+
+  Else
+    Me.Close()
+  Endif
+
+End
+
+Public Sub PictureBoxFabricaPrincipal_MouseDown()
+
+  Dim f As New FabricaEdificios
+
+  GlobalEspecie -= F.coste
+  ActualizaValoresContadores()
+  NivelArbol = 1
+  ActivarEdificios()
+  ListaEdificios.add(f)
+
+End
+
+Public Sub PictureBoxAeroGeneradores_MouseDown()
+
+  Dim f As New MOLINO
+
+  GlobalEspecie -= F.coste
+  ActualizaValoresContadores()
+  NivelArbol = 2
+  ActivarEdificios()
+  ListaEdificios.add(f)
+
+End
+
+Public Sub PictureBoxRefineria_MouseDown()
+
+  Dim f As New FabricaCosechadora
+
+  GlobalEspecie -= F.coste
+  ActualizaValoresContadores()
+
+  ListaEdificios.add(f)
+
+End
+
+Public Sub PictureBoxRadar_MouseDown()
+
+  NivelArbol = 3
+  ActivarEdificios()
+
+End
+
+Public Sub PictureBoxFabricaLigera_MouseDown()
+
+  NivelArbol = 4
+  ActivarEdificios()
+
+End
+
+Public Sub PictureBoxCentroInvestigacion_MouseDown()
+
+  NivelArbol = 5
+  ActivarEdificios()
+
+End
+
+Public Sub PictureBoxCosechadora_MouseDown()
+
+  Dim v As New COSECHADORA
+
+  GlobalEspecie -= v.coste
+  ActualizaValoresContadores()
+  ListaVehiculos.add(v)
+
+End
+
+Public Sub ActivarEdificios()
+
+  If NivelArbol > 0 Then
+    PictureBoxAeroGeneradores.Picture = Picture["edificios/FabricaMolinoEolico.png"]
+    PictureBoxAeroGeneradores.Enabled = True
+  Endif
+
+  If NivelArbol > 1 Then
+    PictureBoxRefineria.Picture = Picture["edificios/FabricaRefineriaEspecie.png"]
+    PictureBoxRefineria.Enabled = True
+    PictureBoxRadar.Picture = Picture["edificios/Radar.png"]
+    PictureBoxRadar.Enabled = True
+  Endif
+
+  If NivelArbol > 2 Then
+    PictureBoxSilo.Picture = Picture["edificios/Radar.png"]
+    PictureBoxSilo.Enabled = True
+
+    PictureBoxTorretaDefensa.Picture = Picture["edificios/TorretaDefensa.png"]
+    PictureBoxTorretaDefensa.Enabled = True
+
+    PictureBoxCuartel.Picture = Picture["edificios/FabricaCuartelPersonal.png"]
+    PictureBoxCuartel.Enabled = True
+
+    PictureBoxFabricaLigera.Picture = Picture["edificios/FabricaVehiculosLigeros.png"]
+    PictureBoxFabricaLigera.Enabled = True
+
+  Endif
+
+  If NivelArbol > 3 Then
+    PictureBoxCentroInvestigacion.Picture = Picture["edificios/FactoriaAltaTecnologia.png"]
+    PictureBoxCentroInvestigacion.Enabled = True
+  Endif
+  If NivelArbol > 4 Then
+    PictureBoxFabricaPesada.Picture = Picture["edificios/FabricaVehiculosPesados.png"]
+    PictureBoxFabricaPesada.Enabled = True
+    PictureBoxTallerReparacion.Picture = Picture["edificios/FabricaReparacion.png"]
+    PictureBoxTallerReparacion.Enabled = True
+  Endif
+
+End
+
+Public Sub PictureBoxCuartel_MouseDown()
+
+End
+
+Public Sub ButtonArbol_Click()
+
+  FormArbolTecnologico.Show()
+
+End

@@ -1,0 +1,142 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,162,83)
+  { Label1 Label
+    MoveScaled(4,3,22,5)
+    Alignment = Align.Right
+    Border = Border.Plain
+    Text = ("Especie:")
+  }
+  { Label2 Label
+    MoveScaled(4,9,22,5)
+    Alignment = Align.Right
+    Border = Border.Plain
+    Text = ("Produccion Energia:")
+  }
+  { LCDLabelEspecie LCDLabel
+    MoveScaled(28,3,20,5)
+    Text = ("0")
+  }
+  { LCDLabelEnergia LCDLabel
+    MoveScaled(28,9,20,5)
+    Text = ("0")
+  }
+  { Timer1 #Timer
+    #MoveScaled(73,63)
+  }
+  { TextAreaInforme TextArea
+    MoveScaled(102,3,59,39)
+    Font = Font["TeX Gyre Cursor"]
+    Background = &HE0E0E0&
+    ReadOnly = True
+    Wrap = True
+  }
+  { Label3 Label
+    MoveScaled(4,60,30,4)
+    Text = ("Noticias y Avisos:")
+  }
+  { TextAreaNoticiasyAvisos TextArea
+    MoveScaled(3,64,61,13)
+  }
+  { LabelHoraActualSistema Label
+    MoveScaled(69,73,30,4)
+  }
+  { PictureBoxFabricaPrincipal PictureBox
+    MoveScaled(4,17,16,14)
+    ToolTip = ("Fabrica Principal")
+    Picture = Picture.Load("edificios/PlantaFabricaPrincipal.png")
+    Stretch = True
+  }
+  { PictureBoxAeroGeneradores PictureBox
+    MoveScaled(21,17,16,14)
+    ToolTip = ("AeroGeneradores-Molinos")
+    Ignore = True
+    Picture = Picture.Load("edificios/FabricaMolinoEolicoGRIS.png")
+    Stretch = True
+    Border = Border.Plain
+  }
+  { PictureBoxRefineria PictureBox
+    MoveScaled(38,17,16,14)
+    ToolTip = ("Refineria de Especie")
+    Ignore = True
+    Picture = Picture.Load("edificios/FabricaRefineriaEspecieGRIS.png")
+    Stretch = True
+    Border = Border.Plain
+  }
+  { PictureBoxCosechadora PictureBox
+    MoveScaled(78,22,5,8)
+    ToolTip = ("Cosechadora")
+    Ignore = True
+    Picture = Picture.Load("edificios/VehiculoCosechadoraRojo.png")
+    Stretch = True
+  }
+  { PictureBoxSilo PictureBox
+    MoveScaled(4,32,16,12)
+    ToolTip = ("Silo de Especie")
+    Ignore = True
+    Picture = Picture.Load("edificios/siloGRIS.png")
+    Stretch = True
+    Border = Border.Plain
+  }
+  { PictureBoxTorretaDefensa PictureBox
+    MoveScaled(21,32,16,12)
+    ToolTip = ("Torreta Defensora")
+    Ignore = True
+    Picture = Picture.Load("edificios/TorretaDefensaGRIS.png")
+    Stretch = True
+    Border = Border.Plain
+  }
+  { PictureBoxRadar PictureBox
+    MoveScaled(55,17,16,14)
+    ToolTip = ("Central Radar")
+    Ignore = True
+    Picture = Picture.Load("edificios/RadarGRIS.png")
+    Stretch = True
+    Border = Border.Plain
+  }
+  { PictureBoxFabricaLigera PictureBox
+    MoveScaled(4,45,16,12)
+    ToolTip = ("Fabrica Vehiculos Ligeros")
+    Ignore = True
+    Picture = Picture.Load("edificios/FabricaVehiculosLigerosGRIS.png")
+    Stretch = True
+    Border = Border.Plain
+  }
+  { PictureBoxFabricaPesada PictureBox
+    MoveScaled(55,45,16,12)
+    ToolTip = ("Fabrica Vehiculos Pesados")
+    Ignore = True
+    Picture = Picture.Load("edificios/FabricaVehiculosPesadosGRIS.png")
+    Stretch = True
+    Border = Border.Plain
+  }
+  { PictureBoxTallerReparacion PictureBox
+    MoveScaled(38,45,16,12)
+    ToolTip = ("Talleres de Reparacion")
+    Ignore = True
+    Picture = Picture.Load("edificios/FabricaReparacionGRIS.png")
+    Stretch = True
+    Border = Border.Plain
+  }
+  { PictureBoxCuartel PictureBox
+    MoveScaled(38,32,16,12)
+    ToolTip = ("Cuartel Tropas")
+    Ignore = True
+    Picture = Picture.Load("edificios/FabricaCuartelPersonalGRIS.png")
+    Stretch = True
+    Border = Border.Plain
+  }
+  { PictureBoxCentroInvestigacion PictureBox
+    MoveScaled(21,45,16,12)
+    ToolTip = ("Centro de Investigación")
+    Ignore = True
+    Picture = Picture.Load("edificios/FactoriaAltaTecnologiaGRIS.png")
+    Stretch = True
+    Border = Border.Plain
+  }
+  { ButtonArbol Button
+    MoveScaled(62,7,16,8)
+    Text = ("Arbol")
+  }
+}

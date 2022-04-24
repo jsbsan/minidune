@@ -1,0 +1,5 @@
+' Gambas class file
+
+Property coste As Integer Use $intCoste 'coste de construirlo
+Property energia As Integer Use $intEnergia
+Property CosteMantenimiento As Integer Use $intCosteMantenimiento
